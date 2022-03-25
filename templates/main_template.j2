@@ -94,7 +94,7 @@
 {%- macro powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-%}
 {{ '\n==పవర్ ప్లే గణాంకాలు==\n' }}
 {%- if PowerPlay_goals != "NONE" -%}
-{{Name}} పవర్ ప్లే లో {{PowerPlay_goals}} గోల్స్, {{PowerPlay_Assists}} అసిస్ట్లు సాధించాడు. {{" "}}
+{{Name}} పవర్ ప్లే లో {{PowerPlay_Goals}} గోల్స్, {{PowerPlay_Assists}} అసిస్ట్లు సాధించాడు. {{" "}}
 {%- endif -%}
 {%- if Time_on_Ice_per_Game != "NONE" -%}
 ఇతను ప్రతి గేముకి గరిష్టంగా {{Time_on_Ice_per_Game}} ఆడాడు{{" "}}
