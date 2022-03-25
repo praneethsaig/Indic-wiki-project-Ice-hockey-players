@@ -41,7 +41,7 @@ tewiki = '''<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:x
 
 # Global Variables
 
-username ="Plantsindicwiki"
+username ="Icehockeyplayersindicwiki"
 user_id ="18105"
 
 # Funtions to write page to file object
