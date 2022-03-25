@@ -24,7 +24,7 @@ def getData(row,i):
 		'Penalty_Minutes':row.Penalty_Minutes.values[0],
 		'Shots_on_Goal':row.Shots_on_Goal.values[0],
 		'Shooting_Percentage':row.Shooting_Percentage.values[0],
-		#'PowerPlay_Goals':(row.PowerPlay_Goals.values[0]),
+		'PowerPlay_Goals':(row.PowerPlay_Goals.values[0]),
 		'PowerPlay_Assists':row.PowerPlay_Assists.values[0],
 		'Short_Goals':row.Short_Goals.values[0],
 		'Short_Assists':row.Short_Assists.values[0],
