@@ -91,7 +91,7 @@
 {%- endif -%}
 {%-endmacro-%}
 
-{%- macro powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_goals,Time_on_Ice_per_Game)-%}
+{%- macro powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-%}
 {{ '\n==పవర్ ప్లే గణాంకాలు==\n' }}
 {%- if PowerPlay_goals != "NONE" -%}
 {{Name}} పవర్ ప్లే లో {{PowerPlay_goals}} గోల్స్, {{PowerPlay_Assists}} అసిస్ట్లు సాధించాడు. {{" "}}
@@ -111,7 +111,7 @@
 {{- career(Name,Position,Team,Games_Played,Goals,Assists,Points,PlusMinus_Ratings,Number)-}}
 {{- career_statistics(Name,Games_Started,Wins,Losses,Ties,Goals_Aganist,Saves,Save_Percentage,Shutouts,Overtime_Losses,Penalty_Minutes)-}}
 {{- statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_goals)-}}
-{{- powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_goals,Time_on_Ice_per_Game)-}}
+{{- powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-}}
 {{- references(Name) -}}
 
 
