@@ -2,7 +2,7 @@
 	{{'{{Infobox Sports_person'}}
 	|పేరు = {{Name}}
 	|జననం = {{Date_of_birth}}
-  {%- if Place_of_birth!="NONE"-%}
+  	{%- if Place_of_birth!="NONE"-%}
 	|పుట్టిన ప్రదేశం = {{Place_of_birth}}
 	{%- endif -%}
 	|ఎత్తు ={{Height}}
@@ -72,7 +72,7 @@
 {%- endif -%}
 {%-endmacro-%}
 
-{%- macro statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_goals)-%}
+{%- macro statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_Goals)-%}
 {{ '\n==Statistics==\n' }}
 {%- if Shots_on_Goal != "NONE" -%}
 {{Name}} గోల్ కొట్టడానికి {{Shots_on_Goal}}సార్లు ప్రయత్నించాడు. అందులో ఇతను {{Goals}} గోల్స్ చేసాడు.దాని ఫలితంగా ఇతని గోల్ షూటింగ్ శాతం {{Shooting_Percentage}}. {{" "}}
@@ -86,8 +86,8 @@
 {%- if Short_Goals != "NONE" -%}
 ఇతను  సాధించిన షార్ట్ గోల్స్ {{Short_Goals}}, షార్ట్ అస్సిట్లు {{Short_Assists}}. {{Name}}, {{Game_Winning_Goals}} ఆట గెలిచే గోల్స్ సాధించాడు,{{" "}}
 {%- endif -%}
-{%- if Game_Tying_goals != "NONE" -%}
-అలాగే {{Game_Tying_goals}} సార్లు ఇతడు  గోల్ చేసి ఆటను  టై  చేసాడు. {{" "}}
+{%- if Game_Tying_Goals != "NONE" -%}
+అలాగే {{Game_Tying_Goals}} సార్లు ఇతడు  గోల్ చేసి ఆటను  టై  చేసాడు. {{" "}}
 {%- endif -%}
 {%-endmacro-%}
 
@@ -110,7 +110,7 @@
 {{- Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth)-}}
 {{- career(Name,Position,Team,Games_Played,Goals,Assists,Points,PlusMinus_Ratings,Number)-}}
 {{- career_statistics(Name,Games_Started,Wins,Losses,Ties,Goals_Aganist,Saves,Save_Percentage,Shutouts,Overtime_Losses,Penalty_Minutes)-}}
-{{- statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_goals)-}}
+{{- statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_Goals)-}}
 {{- powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-}}
 {{- references(Name) -}}
 
