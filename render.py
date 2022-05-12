@@ -66,23 +66,23 @@ def main():
 
 	#remove this to generate articles for all movies
 	ids = hockeyDF.Index.tolist()
-	#ids = ids[:1]
+	# ids = ids[2454:3340]
 	# print(ids)
 
 	# print(type(hockeyDF.iloc[0]))
 	# Initiate the file object
-	fobj = open('1.xml', 'w')
+	fobj = open('7.xml', 'w')
 	fobj.write(tewiki+'\n')
 
 	# Give the page_id from which you want to generate the articles in
 	initial_page_id = 500000
 
 	# Loop to grab all data from the .pkl and generate articles using the template
-	for i in range(len(ids)):
+	for i in ids:
 		row = hockeyDF.loc[(hockeyDF['Index']==i+1)]
 		title = row.Name.values[0]
 		text = template.render(getData(row,i))
-		# print(text)
+		print(i)
 
 		writePage(initial_page_id,title,text,fobj)
 		initial_page_id += 1
