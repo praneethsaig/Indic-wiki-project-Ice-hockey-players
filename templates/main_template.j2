@@ -1,51 +1,51 @@
 {%- macro Infobox (Name,Date_of_birth,Place_of_birth,Height,Weight,Position,Team,Number,Wins,Losses,Ties,Goals,Shooting_Percentage) -%}
-	{{'{{Infobox Sports_person'}}
-	|పేరు = {{Name}}
-	|జననం = {{Date_of_birth}}
+	{{'{{Infobox  ice hockey player'}}
+	|birth_date = {{Date_of_birth}}
   {%- if Place_of_birth!="NONE"-%}
-	|పుట్టిన ప్రదేశం = {{Place_of_birth}}
+	|birth_place = {{Place_of_birth}}
 	{%- endif -%}
-	|ఎత్తు ={{Height}}
-	|బరువు = {{Weight}}
-	|స్థానం = {{Position}}
-	|టీమ్ = {{Team}} {{" "}}
-	{%- if Number!="NONE"-%}
-	|జెర్సీ నంబరు = {{Number}}
-	{%- endif -%} 
-	{%- if Wins!="NONE"-%}
-	|గెలిచినా ఆటలు = {{Wins}}
-	{%- endif -%}
-	{%- if Losses!="NONE"-%}
-	|ఓడిన ఆటలు = {{Losses}}
-	{%- endif -%}
-	{%- if Ties!="NONE"-%}
-	|టై అయినా ఆటలు = {{Ties}}
-	{%- endif -%}
-	{%- if Goals!="NONE"-%}
-	|గోల్స్ = {{Goals}}
-	{%- endif -%}
-	{%- if Shooting_Percentage!="NONE"-%}
-	|గోల్ అయ్యే రేటు = {{Shooting_Percentage}}
-	{%- endif -%}
+	|height_ft ={{Height*0.0328084}}
+	|weight_lb = {{Weight*2.20462}}
+  |played_for = {{Team}} 
+	|position = {{Position}}{{" "}}
 	{{'}}\n'}}
 {% endmacro -%}
 
-{%- macro Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth)-%}
+{%- macro Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-%}
 {{ '\n==పరిచయం==\n' }}
 {{Name}} {{Date_of_birth}}న  జన్మించాడు. {{" "}}
 ఇతను {{Place_of_birth}}కి చెందిన హాకీ ప్లేయర్. {{" "}}
-ఇతని ఎత్తు {{Height}} సెంటీమీటర్లు, బరువు {{Weight}} కిలోలు, శరీర ద్రవ్యరాశి సూచిక {{Body_mass_index}}. {{" "}}
+ఇతని ఎత్తు {{Height}} సెంటీమీటర్లు, బరువు {{Weight}} కిలోలు. {{" "}}
 ఇతను పుట్టిన ప్రదేశము {{Place_of_birth}}.{{" "}}
+శరీర ద్రవ్యరాశి సూచిక {{Body_mass_index}}.{{" "}}
+ఇతను {{Season_year}} సంవత్సరంలో వృత్తిపరంగా మంచు హాకీ ఆడటం ప్రారంభించాడు
 {%-endmacro-%}
 
 {%- macro career(Name,Position,Team,Games_Played,Goals,Assists,Points,PlusMinus_Ratings,Number)-%}
 {{ '\n==కెరీర్==\n' }}
-{{Name}} మంచు హాకీ లో ఆడే స్థానం {{Position}}, ఆడే టీమ్ కోడ్  {{Team}}. {{" "}}
-అతడు  మొత్తం {{Games_Played}} ఆడాడు. {{" "}}
+{{Name}} మంచు హాకీ లో ఆడే స్థానం {{Position}}, ఆడిన టీమ్ కోడ్  {{Team}}. {{" "}}
+ఇతను తన కెరీర్ లో {{Games_Played}}సార్లు మంచు హాకీ ఆడాడు. {{" "}}
 {%- if Goals != "NONE" -%}
-ఇతను {{Goals}} గోల్స్, {{Assists}} అస్సిట్స్లు, {{Points}} పాయింట్లు సాధించాడు; దాని ఫలితంగా రేటింగ్ లో జరిగిన మార్పు {{PlusMinus_Ratings}}. 
+ఇతను చేసిన గోల్స్ {{Goals}}, 
+{%-else-%}
+ఇతను చేసిన గోల్స్ 0,
 {%- endif -%}
-{%- if storyline != "NONE" -%}
+{%- if Assists != "NONE" -%}
+ అస్సిస్ట్స్ {{Assists}}, 
+{%-else-%}
+అస్సిస్ట్స్ 0,
+{%- endif -%}
+{%- if Points != "NONE" -%}
+ {{Points}} పాయింట్లు సాధించాడు;{{" "}}
+{%-else-%}
+ 0 పాయింట్లు సాధించాడు;{{" "}}
+{%- endif -%}
+{%- if PlusMinus_Ratings != "NONE" -%}
+ వీటి ఫలితంగా రేటింగ్ లో జరిగిన మార్పు {{PlusMinus_Ratings}}.{{" "}}
+{%-else-%}
+ వీటి ఫలితంగా ఏ మార్పు జరగలేదు.{{" "}}
+{%- endif -%}
+{%- if Number != "NONE" -%}
 అతని జెర్సీ సంఖ్య {{Number}}.{{" "}}
 {%- endif -%}
 {%-endmacro-%}
@@ -54,68 +54,128 @@
 {{ '\n==కెరీర్ గణాంకాలు ==\n' }}
 {%- if Games_Started != "NONE" -%}
 {{Name}} మొదలు పెట్టిన ఆటలు {{Games_Started}}.{{" "}}
+{%-else-%}
+{{Name}} ఎప్పుడు ఆట మొదలు పెట్టలేదు.
 {%- endif -%}
 {%- if Wins != "NONE" -%}
-అందులో గెలిచినా ఆటలు {{Wins}}, ఓడిన ఆటలు {{Losses}}, {{" "}}
+అందులో గెలిచిన ఆటలు {{Wins}}, {{" "}}
+{%-else-%}
+అందులో గెలిచిన ఆటలు 0,
+{%- endif -%}
+{%- if Losses != "NONE" -%}
+ ఓడిన ఆటలు {{Losses}}, {{" "}}
+{%-else-%}
+ఓడిన ఆటలు 0,
 {%- endif -%}
 {%- if Ties != "NONE" -%}
-టై అయినా ఆటలు {{Ties}}. {{" "}}
+టై అయిన ఆటలు {{Ties}}. {{" "}}
+{%-else-%}
+టై అయిన ఆటలు 0.{{" "}}
 {%- endif -%}
-{%- if Goals_Aganist != "NONE" -%}
-  ఈ ప్లేయర్ పై {{Goals_Against}} సార్లు గోల్ చేయడానికి ప్రయత్నించారు, అందులో ఇతను {{Saves}} సార్లు గోల్ అవ్వకుండా కాపాడాడు. ఇతని సేవ్ శాతం {{Save_Percentage}}. ఇతను {{Shutouts}} షూటౌట్ లలో పాల్గొన్నాడు.{{" "}}
+{%- if Goals_Against != "NONE" -%}
+  ఈ ప్లేయర్ కి వ్యతిరేకముగా {{Goals_Against}} సార్లు గోల్ చేయడానికి ప్రయత్నించారు, 
 {%- else -%}
-  ఈ ప్లేయర్ పై 0 సార్లు గోల్ చేయడానికి ప్రయత్నించారు, అందులో ఇతను 0 సార్లు గోల్ అవ్వకుండా కాపాడాడు.
+  ఈ ప్లేయర్ కి వ్యతిరేకముగా గోల్ చేయడానికి ఒకసారి కూడా ప్రయత్నించలేదు, 
+{%- endif -%}
+{%- if Saves != "NONE" -%}
+ వీటిలో ఇతను {{Saves}} సార్లు గోల్ అవ్వకుండా కాపాడాడు. {{" "}}
+{%- else -%}
+ వీటిలో ఇతను ఒకసారి కూడా గోల్ అవ్వకుండా కాపాడలేకపోయాడు.{{" "}}
+{%- endif -%}
+{%- if Save_Percentage != "NONE" -%}
+ ఇతని సేవ్ శాతం {{Save_Percentage}}.{{" "}}
+{%- else -%}
+ ఇతని సేవ్ శాతం 0.{{" "}}
+{%- endif -%}
+{%- if Shutouts != "NONE" -%}
+ ఇతను {{Shutouts}} షూటౌట్ లలో ఆడాడు.{{" "}}
+{%- else -%}
+ ఇతను 0 షూటౌట్ లలో ఆడాడు.{{" "}}
 {%- endif -%}
 {%- if Overtime_Losses != "NONE" -%}
- ఈ ప్లేయర్ ఓవర్టైం  లాసులు {{Overtime_Losses}}.  {{" "}}
+ ఈ ప్లేయర్ ఓవర్ టైం లాసులు {{Overtime_Losses}}.{{" "}}
+{%-else-%}
+ ఈ ప్లేయర్ ఓవర్ టైం లాసులు 0.  {{" "}}
 {%- endif -%}
 {%- if Penalty_Minutes != "NONE" -%}
-ఇతను {{Penalty_Minutes}} పెనాలిటీ నిమిషాల్లో లో పాలుగోన్నాడు.  {{" "}}
+ఇతను {{Penalty_Minutes}} పెనాలిటీ నిమిషాల్లో ఆడాడు.{{" "}}
+{%-else-%}
+ఇతను పెనాల్టీ మినిట్స్ లో ఎప్పుడు ఆడలేదు.{{" "}}
 {%- endif -%}
 {%-endmacro-%}
 
 {%- macro statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_Goals)-%}
-{{ '\n==Statistics==\n' }}
+{{ '\n==గణాంకాలు==\n' }}
 {%- if Shots_on_Goal != "NONE" -%}
-{{Name}} గోల్ కొట్టడానికి {{Shots_on_Goal}} సార్లు ప్రయత్నించాడు. అందులో ఇతను {{Goals}} గోల్స్ చేసాడు.దాని ఫలితంగా ఇతని గోల్ షూటింగ్ శాతం {{Shooting_Percentage}}. {{" "}}
+{{Name}} గోల్ కొట్టడానికి {{Shots_on_Goal}} సార్లు ప్రయత్నించాడు.{{" "}}
+{%-else-%}
+{{Name}} గోల్ కొట్టడానికి ఒకసారి కూడా ప్రయత్నించలేదు.{{" "}}
 {%- endif -%}
-{%- if storyline != "NONE" -%}
-{{storyline}}{{" "}}
+{%- if Goals != "NONE" -%}
+ అందులో ఇతను చేసిన గోల్స్ {{Goals}}. {{" "}}
+{%-else-%}
+ అందులో ఇతను చేసిన గోల్స్ 0.{{" "}}
+{%- endif -%}
+{%- if Shooting_Percentage != "NONE" -%}
+ వీటి ఫలితంగా ఇతని గోల్ షూటింగ్ శాతం {{Shooting_Percentage}}. {{" "}}
+{%-else-%}
+ వీటి ఫలితంగా ఇతని గోల్ షూటింగ్ శాతం 0. {{" "}}
 {%- endif -%}
 {%- if Shots_Against != "NONE" -%}
-ఇతనికి వెతిరేకంగా {{Shots_Against}} సార్లు షాట్  కొట్టడానికి ప్రయత్నించారు. {{" "}}
+ఇతనికి వ్యతిరేకంగా {{Shots_Against}} సార్లు షాట్లు  కొట్టడానికి ప్రయత్నించారు. {{" "}}
+{%-else-%}
+ఇతనికి వ్యతిరేకంగా 0 సార్లు షాట్లు  కొట్టడానికి ప్రయత్నించారు. {{" "}}
 {%- endif -%}
 {%- if Short_Goals != "NONE" -%}
-ఇతను  సాధించిన షార్ట్ గోల్స్ {{Short_Goals}}, షార్ట్ అస్సిట్లు {{Short_Assists}}. {{Name}}, {{Game_Winning_Goals}} ఆట గెలిచే గోల్స్ సాధించాడు,{{" "}}
+ఇతను  సాధించిన షార్ట్ గోల్స్ {{Short_Goals}}, 
+{%-else-%}
+ఇతను  సాధించిన షార్ట్ గోల్స్ 0,
 {%- endif -%}
-{%- if Game_Tying_goals != "NONE" -%}
-  అలాగే {{Game_Tying_goals}} సార్లు ఇతడు  గోల్ చేసి ఆటను  టై  చేసాడు. {{" "}}
+{%- if Short_Assists != "NONE" -%}
+ షార్ట్ అస్సిట్లు {{Short_Assists}}.  
+{%-else-%}
+ షార్ట్ అస్సిట్లు 0.
+{%- endif -%}
+{%- if Game_Winning_Goals != "NONE" -%}
+ {{Name}}, చేసిన గోల్స్ వలన గెలిచిన ఆటలు {{Game_Winning_Goals}}. {{" "}}
+{%-else-%}
+ {{Name}}, చేసిన గోల్స్ వలన గెలిచిన ఆటలు 0.{{" "}}
+{%- endif -%}
+{%- if Game_Tying_Goals != "NONE" -%}
+  అలాగే {{Game_Tying_Goals}} సార్లు ఇతడు గోల్ చేసి ఆటను టై చేసాడు. {{" "}}
 {%- else -%}
-  అలాగే ఇతడు ఎప్పుడు ఆటను  టై  చెయ్యలేదు. {{" "}}
+  అలాగే ఇతడు ఎప్పుడు ఆటను టై చెయ్యలేదు. {{" "}}
 {%- endif -%}
 {%-endmacro-%}
 
 {%- macro powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-%}
 {{ '\n==పవర్ ప్లే గణాంకాలు==\n' }}
 {%- if PowerPlay_goals != "NONE" -%}
-{{Name}} పవర్ ప్లే లో {{PowerPlay_Goals}} గోల్స్, {{PowerPlay_Assists}} అసిస్ట్లు సాధించాడు. {{" "}}
+{{Name}} పవర్ ప్లే లో చేసిన గోల్స్ {{PowerPlay_Goals}}, 
+{%-else-%}
+{{Name}} పవర్ ప్లే లో చేసిన గోల్స్ 0,
+{%- endif -%}
+{%- if PowerPlay_Assists != "NONE" -%}
+ {{PowerPlay_Assists}} అస్సిస్ట్స్ సాధించాడు. {{" "}}
+{%-else-%}
+ 0 అస్సిస్ట్స్ సాధించాడు. {{" "}}
 {%- endif -%}
 {%- if Time_on_Ice_per_Game != "NONE" -%}
-ఇతను ప్రతి గేముకి గరిష్టంగా {{Time_on_Ice_per_Game}} ఆడాడు{{" "}}
+ఇతను ప్రతి గేముకి గరిష్టంగా మంచులో ఆడిన సమయము {{Time_on_Ice_per_Game}}. {{" "}}
+{%-else-%}
+ఇతను ప్రతి గేముకి గరిష్టంగా మంచులో ఆడిన సమయము 0. {{" "}}
 {%- endif -%}
 {%-endmacro-%}
 
 {%- macro references(Name) -%}
 {{ '\n==మూలాలు==\n' }}
-1.https://www.kaggle.com/alexbenzik/nhl-players-statistics .
+1.https://www.kaggle.com/alexbenzik/nhl-players-statistics.
 {%-endmacro-%}
 
 {{- Infobox(Name,Date_of_birth,Place_of_birth,Height,Weight,Position,Team,Number,Wins,Losses,Ties,Goals,Shooting_Percentage) -}}
-{{- Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth)-}}
+{{- Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-}}
 {{- career(Name,Position,Team,Games_Played,Goals,Assists,Points,PlusMinus_Ratings,Number)-}}
-{{- career_statistics(Name,Games_Started,Wins,Losses,Ties,Goals_Aganist,Saves,Save_Percentage,Shutouts,Overtime_Losses,Penalty_Minutes)-}}
+{{- career_statistics(Name,Games_Started,Wins,Losses,Ties,Goals_Against,Saves,Save_Percentage,Shutouts,Overtime_Losses,Penalty_Minutes)-}}
 {{- statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_Goals)-}}
 {{- powerplay_statistics(Name,PowerPlay_Assists,PowerPlay_Goals,Time_on_Ice_per_Game)-}}
 {{- references(Name) -}}
-
-
