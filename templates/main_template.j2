@@ -1,14 +1,26 @@
 {%- macro Infobox (Name,Date_of_birth,Place_of_birth,Height,Weight,Position,Team,Number,Wins,Losses,Ties,Goals,Shooting_Percentage) -%}
-	{{'{{Infobox  ice hockey player'}}
-	|birth_date = {{Date_of_birth}}
-  {%- if Place_of_birth!="NONE"-%}
-	|birth_place = {{Place_of_birth}}
-	{%- endif -%}
-	|height_ft ={{Height*0.0328084}}
-	|weight_lb = {{Weight*2.20462}}
-  |played_for = {{Team}} 
-	|position = {{Position}}{{" "}}
-	{{'}}\n'}}
+	{{'{{Infobox'}}
+  | bodystyle = width:25em;text-align:center;
+  | abovestyle = background-color:#cfc;
+  | headerstyle = background-color:#ccf;text-align:center;
+  | labelstyle = background-color:#ddf; width:20%;text-align:left;
+  | title = {{Name}}
+  | Header1 = Ice Hockey Player 
+  | label1 = పుట్టిన తేదీ 
+  | data1 = {{Date_of_birth}}
+  | label2 = జన్మస్థలం 
+  | data2 = {{Place_of_birth}}
+  | label3 = ఎత్తు 
+  | data3 = {{Height*0.0328084}}ft
+  | label4 = బరువు 
+  | data4 = {{Weight*2.20462}}lb 
+  | label5 = జట్టు 
+  | data5 = {{Team}} 
+  | label6 = స్థానం 
+  | data6 = {{Position}}
+  | label7 = జెర్సీ నంబర్ 
+  | data7 = {{Number}} 
+  }}
 {% endmacro -%}
 
 {%- macro Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-%}
