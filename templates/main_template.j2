@@ -3,7 +3,7 @@
   | name = {{Name}}
   | birth_date = {{Date_of_birth}}
   | birth_place = {{Place_of_birth}}
-  | occupation = [[Ice hockey|Ice hockey player]]
+  | occupation = [[Ice hockey|ఐస్ హాకీ ప్లేయర్]]
   | height = {{Height}}cm
   | weight = {{Weight}}kg 
   | team = {{Team}}
@@ -11,9 +11,9 @@
   }}
 {% endmacro -%}
 
-{%- macro Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-%}
+{%- macro Introduction(Name,Name1,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-%}
 {{ '\n==పరిచయం==\n' }}
-{{Name}} {{Date_of_birth}}న  జన్మించాడు. {{" "}}
+{{Name}}({{Name1}}) {{Date_of_birth}}న  జన్మించాడు. {{" "}}
 ఇతను {{Place_of_birth}}కి చెందిన హాకీ ప్లేయర్. {{" "}}
 ఇతని ఎత్తు {{Height}} సెంటీమీటర్లు, బరువు {{Weight}} కిలోలు. {{" "}}
 ఇతను పుట్టిన ప్రదేశము {{Place_of_birth}}.{{" "}}
@@ -177,7 +177,7 @@
 {%-endmacro-%}
 
 {{- Infobox(Name,Date_of_birth,Place_of_birth,Height,Weight,Position,Team,Number,Wins,Losses,Ties,Goals,Shooting_Percentage) -}}
-{{- Introduction(Name,Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-}}
+{{- Introduction(Name,Name1Date_of_birth,Weight,Body_mass_index,Place_of_birth,Season_year)-}}
 {{- career(Name,Position,Team,Team1,Games_Played,Goals,Assists,Points,PlusMinus_Ratings,Number)-}}
 {{- career_statistics(Name,Games_Started,Wins,Losses,Ties,Goals_Against,Saves,Save_Percentage,Shutouts,Overtime_Losses,Penalty_Minutes)-}}
 {{- statistics(Name,Shots_on_Goal,Goals,Shooting_Percentage,Shots_Against,Short_Goals,Short_Assists,Game_Winning_Goals,Game_Tying_Goals)-}}
